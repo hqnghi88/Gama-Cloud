@@ -1,0 +1,30 @@
+<Experiments>
+	<Folder name="Tutorials" id="tuto">
+		<Folder name="3D" id="3d">
+			<GamlFile name="Model 01" path="/Tutorials/3D/models/Model 01.gaml" id="3d1">
+				<Experiment>Tuto3D</Experiment>
+			</GamlFile>
+			<GamlFile name="Model 02" path="/Tutorials/3D/models/Model 02.gaml" id="3d2">
+				<Experiment>Tuto3D</Experiment>
+				<Experiment>Tuto3D</Experiment>
+			</GamlFile>
+			<GamlFile name="Model 03" path="/Tutorials/3D/models/Model 03.gaml" id="3d3">
+				<Experiment>Tuto3D</Experiment>
+			</GamlFile>
+		</Folder>
+		<Folder name="Road Traffic" id="roadTraffic">
+			<GamlFile name="Model 01" path="/Tutorials/Road Traffic/models/Model 01.gaml" id="roadTraffic1">
+				<Experiment>road_traffic</Experiment>
+			</GamlFile>
+			<GamlFile name="Model 02" path="/Tutorials/Road Traffic/models/Model 02.gaml" id="roadTraffic2">
+				<Experiment>road_traffic</Experiment>
+			</GamlFile>
+			<GamlFile name="Model 03" path="/Tutorials/Road Traffic/models/Model 03.gaml" id="roadTraffic3">
+				<Experiment>road_traffic</Experiment>
+			</GamlFile>
+			<GamlFile name="Test" path="/Features/Batch/Batch.gaml" id="batch1">
+				<Experiment>Simple</Experiment>
+			</GamlFile>
+		</Folder>
+	</Folder>
+</Experiments>

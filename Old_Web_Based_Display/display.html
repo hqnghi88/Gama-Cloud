@@ -1,0 +1,222 @@
+<html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Experiment Online</title>
+		<link rel="icon" type="image/png" href="data/img/favicon.png" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/display.css">
+		<link rel="stylesheet" href="css/style_header.css">
+		<link rel="stylesheet" href="css/style_footer.css">
+		
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="js/jquery-ui-1.12.0.custom/jquery-ui.js"></script>
+		
+		<script src="js/interact.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+		<script src="js/utils2.js"></script>
+		<script src="js/ajax.js"></script>
+        <script src="js/display.js"></script>
+		
+		<!-- PARTIE WEBGL -->
+		
+		<script src="js/jsGL/three_.js"></script> 
+        <script src="js/jsGL/Detector.js"></script> 
+        <script src="js/jsGL/renderers/CanvasRenderer.js"></script> 
+        <script src="js/jsGL/renderers/Projector.js"></script> 
+		<script src="js/jsGL/controls/OrbitControls.js"></script>
+		<script src="js/jsGL/GLUtil.js"></script>
+		
+		<!-- FIN PARTIE WEBGL -->
+		
+		<!-- METTRE LE CAS NULL DANS LES PARAMS!!!!
+			voir pour le speed 
+			gama -port2020 -gate1515 -openFile "/Tutorials/3D/models/Model 01.gaml#Tuto3D"
+		-->
+    </head>
+    <body onload="onLoad()">
+        
+
+<br><br><br>
+<div class="container" id="containerAll">
+	<div id="addTreeView">
+		<button id="treeButton" value=""></button>
+		<div id="addTreeContainer">
+			<span class="addTop">>></span>
+			<span class="vertical">A<br>r<br>b<br>o<br>r<br>e<br>s<br>c<br>e<br>n<br>c<br>e<br></span>
+			<span class="addBottom">>></span>
+		</div>
+	</div>
+	<div id="nav" class="resize-right">
+		<div id="nav-inside" class="inside">
+			<div id="head-nav">
+				<span class="head">Arborescence</span>
+				<input id="close-nav" type="button" class="close" value=""/>
+				<button id="dispSizeLaunch" value=""></button>
+			</div>
+			<div id="navigation-container">
+				<div id="navigation">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="parameters" class="resize-right">
+		<div id="parameters-inside" class="inside">
+			<div id="head-parameters">
+				<span class="head">Paramètres</span>
+			</div>
+			<div id="paramStore">
+				<table>
+					<tr>
+						<td>
+							<form id="controlPlay">
+								<input type="submit" id="play" value=""/>
+							</form>
+						</td>
+						<td>
+							<form id="controlPause">
+								<input type="submit" id="pause" value=""/>
+							</form>
+						</td>
+						<td>
+							<form id="controlStep">
+								<input type="submit" id="step" value=""/>
+							</form>
+						</td>
+						<td>
+							<form id="controlStop">
+								<input type="submit" id="stop" value=""/>
+							</form>
+						</td>
+						<td>
+							<form id="controlReload">
+								<input type="submit" id="reload" value=""/>
+							</form>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div id="zone">
+					<div class="spaceParamSelect">
+						<span class="parameters">Random number generator</span>
+						<div class="selectdiv">
+							<select id="rng" class="params">
+								<option value="mersenne" selected="">mersenne</option>
+								<option value="cellular">cellular</option>
+								<option value="java">java</option>
+							</select>
+						</div>
+						<br><br><br>
+					</div>
+					<div class="spaceParam">
+						<span class="parameters">Default random seed</span>
+						<input id="seed" class="params" type="number" value="0.015704853066868973" step="any">
+					</div>
+					<div class="spaceParam">
+						<span class="parameters">Vitesse de rafraichissement</span>
+						<input id="speed" class="params" type="range" min="0.1" max="1" step="0.1"/>
+					</div>
+							<!--<script type="text/javascript">
+								$('#speed').(console.log("coucou"));
+								$('#speed').each(function() {
+									parameterEmitter($(this));
+								});
+							</script>-->
+					<div class="spaceParam">
+						<span class="parameters">Mode d'affichage<br><br></span>
+						<form id="lance">
+							<input id="trace" type="radio" name="typeAffichage" value="trace" checked> <span>Mode Trace</span><br>
+							<input id="refresh" type="radio" name="typeAffichage" value="refresh"> Mode Refresh<br>
+						</form>
+					</div>
+				</div>
+				<script src="/js/serv.js"></script>
+			</div>
+		</div>
+	</div>
+	<div id="display">
+		<div id="display-inside" class="inside">
+			<div id="head-display">
+				<span class="head">Simulation</span>
+				<button id="dispSize" value=""></button>
+				<button id="dispSize2" value=""></button>
+				<button id="dispSize3" value=""></button>
+				<button id="dispSize4" value=""></button>
+			</div>
+			<div id="scenes">
+				<!--<div id="choiceBack">
+					<input type="button" id="white" class="backColor" value="" onclick="rendererColor('white');"/>			
+					<input type="button" id="grey" class="backColor" value="" onclick="rendererColor('grey');"/>
+					<input type="button" id="black" class="backColor" value="" onclick="rendererColor('black');"/>
+				</div>
+			<!--{"layers":[{"offset":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":1.0,"objects":[]},{"offset":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":1.0,"objects":[]},{"offset":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":1.0,"objects":[]},{"offset":{"x":0.0,"y":0.0,"z":88.10000000149012},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":0.5,"objects":[]},{"offset":{"x":0.0,"y":0.0,"z":80.20000000298023},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":0.8,"objects":[{"geometry":{"shell":{"points":{"points":[{"x":392.0,"y":533.0,"z":0.0},{"x":391.80785280403234,"y":534.9509032201612,"z":0.0},{"x":391.2387953251129,"y":536.8268343236508,"z":0.0},{"x":390.3146961230255,"y":538.555702330196,"z":0.0},{"x":389.0710678118655,"y":540.0710678118654,"z":0.0},{"x":387.555702330196,"y":541.3146961230254,"z":0.0},{"x":385.8268343236509,"y":542.2387953251128,"z":0.0},{"x":383.9509032201613,"y":542.8078528040323,"z":0.0},{"x":382.0,"y":543.0,"z":0.0},{"x":380.04909677983875,"y":542.8078528040323,"z":0.0},{"x":378.17316567634913,"y":542.2387953251128,"z":0.0},{"x":376.444297669804,"y":541.3146961230254,"z":0.0},{"x":374.9289321881345,"y":540.0710678118655,"z":0.0},{"x":373.68530387697456,"y":538.555702330196,"z":0.0},{"x":372.76120467488715,"y":536.8268343236509,"z":0.0},{"x":372.1921471959677,"y":534.9509032201613,"z":0.0},{"x":372.0,"y":533.0,"z":0.0},{"x":372.1921471959677,"y":531.0490967798387,"z":0.0},{"x":372.76120467488715,"y":529.1731656763491,"z":0.0},{"x":373.68530387697456,"y":527.444297669804,"z":0.0},{"x":374.9289321881345,"y":525.9289321881345,"z":0.0},{"x":376.444297669804,"y":524.6853038769746,"z":0.0},{"x":378.17316567634913,"y":523.7612046748872,"z":0.0},{"x":380.0490967798387,"y":523.1921471959677,"z":0.0},{"x":382.0,"y":523.0,"z":0.0},{"x":383.9509032201613,"y":523.1921471959677,"z":0.0},{"x":385.82683432365087,"y":523.7612046748872,"z":0.0},{"x":387.555702330196,"y":524.6853038769746,"z":0.0},{"x":389.0710678118655,"y":525.9289321881346,"z":0.0},{"x":390.31469612302544,"y":527.444297669804,"z":0.0},{"x":391.23879532511285,"y":529.1731656763491,"z":0.0},{"x":391.8078528040323,"y":531.0490967798387,"z":0.0},{"x":392.0,"y":533.0,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":372.0,"maxx":392.0,"miny":523.0,"maxy":543.0},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"red","value":-65536,"falpha":0.0},"border":{"name":"red","value":-65536,"falpha":0.0},"depth":0.0,"location":{"x":382.0,"y":533.0,"z":0.0},"type":"POLYGON","empty":false},{"geometry":{"shell":{"points":{"points":[{"x":422.0,"y":533.0,"z":0.0},{"x":421.23141121612923,"y":540.803612880645,"z":0.0},{"x":418.9551813004515,"y":548.3073372946035,"z":0.0},{"x":415.2587844921019,"y":555.222809320784,"z":0.0},{"x":410.284271247462,"y":561.2842712474618,"z":0.0},{"x":404.2228093207842,"y":566.2587844921018,"z":0.0},{"x":397.3073372946037,"y":569.9551813004514,"z":0.0},{"x":389.80361288064523,"y":572.2314112161292,"z":0.0},{"x":382.0000000000001,"y":573.0,"z":0.0},{"x":374.19638711935494,"y":572.2314112161292,"z":0.0},{"x":366.69266270539646,"y":569.9551813004515,"z":0.0},{"x":359.77719067921595,"y":566.2587844921019,"z":0.0},{"x":353.71572875253815,"y":561.2842712474619,"z":0.0},{"x":348.74121550789823,"y":555.2228093207841,"z":0.0},{"x":345.04481869954856,"y":548.3073372946036,"z":0.0},{"x":342.76858878387077,"y":540.8036128806451,"z":0.0},{"x":342.0,"y":533.0,"z":0.0},{"x":342.76858878387077,"y":525.1963871193549,"z":0.0},{"x":345.0448186995485,"y":517.6926627053964,"z":0.0},{"x":348.7412155078982,"y":510.7771906792159,"z":0.0},{"x":353.7157287525381,"y":504.7157287525381,"z":0.0},{"x":359.7771906792159,"y":499.7412155078982,"z":0.0},{"x":366.6926627053964,"y":496.0448186995485,"z":0.0},{"x":374.1963871193549,"y":493.76858878387077,"z":0.0},{"x":382.0,"y":493.0,"z":0.0},{"x":389.8036128806451,"y":493.76858878387077,"z":0.0},{"x":397.3073372946036,"y":496.0448186995485,"z":0.0},{"x":404.2228093207841,"y":499.7412155078982,"z":0.0},{"x":410.2842712474619,"y":504.7157287525381,"z":0.0},{"x":415.2587844921018,"y":510.7771906792159,"z":0.0},{"x":418.9551813004515,"y":517.6926627053964,"z":0.0},{"x":421.23141121612923,"y":525.1963871193549,"z":0.0},{"x":422.0,"y":533.0,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":342.0,"maxx":422.0,"miny":493.0,"maxy":573.0},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"orange","value":-23296,"falpha":0.0},"border":{"name":"orange","value":-23296,"falpha":0.0},"depth":0.0,"location":{"x":382.0,"y":533.0,"z":0.0},"type":"POLYGON","empty":true}]},{"offset":{"x":0.0,"y":0.0,"z":80.30000001192093},"scale":{"x":1.0,"y":1.0,"z":1.0},"alpha":1.0,"objects":[{"geometry":{"shell":{"points":{"points":[{"x":326.0,"y":547.857864376269,"z":0.0},{"x":340.14213562373095,"y":576.142135623731,"z":0.0},{"x":311.85786437626905,"y":576.142135623731,"z":0.0},{"x":326.0,"y":547.857864376269,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":311.85786437626905,"maxx":340.14213562373095,"miny":547.857864376269,"maxy":576.142135623731},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"yellow","value":-256,"falpha":0.0},"border":{"name":"yellow","value":-256,"falpha":0.0},"depth":0.0,"location":{"x":326.0,"y":562.0,"z":0.0},"type":"POLYGON","empty":false},{"geometry":{"shell":{"points":{"points":[{"x":353.0,"y":738.857864376269,"z":0.0},{"x":367.14213562373095,"y":767.142135623731,"z":0.0},{"x":338.85786437626905,"y":767.142135623731,"z":0.0},{"x":353.0,"y":738.857864376269,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":338.85786437626905,"maxx":367.14213562373095,"miny":738.857864376269,"maxy":767.142135623731},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"yellow","value":-256,"falpha":0.0},"border":{"name":"yellow","value":-256,"falpha":0.0},"depth":0.0,"location":{"x":353.0,"y":753.0,"z":0.0},"type":"POLYGON","empty":false},{"geometry":{"shell":{"points":{"points":[{"x":621.0,"y":372.85786437626905,"z":0.0},{"x":635.142135623731,"y":401.14213562373095,"z":0.0},{"x":606.857864376269,"y":401.14213562373095,"z":0.0},{"x":621.0,"y":372.85786437626905,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":606.857864376269,"maxx":635.142135623731,"miny":372.85786437626905,"maxy":401.14213562373095},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"yellow","value":-256,"falpha":0.0},"border":{"name":"yellow","value":-256,"falpha":0.0},"depth":0.0,"location":{"x":621.0,"y":387.0,"z":0.0},"type":"POLYGON","empty":false},{"geometry":{"shell":{"points":{"points":[{"x":316.0,"y":69.85786437626905,"z":0.0},{"x":330.14213562373095,"y":98.14213562373095,"z":0.0},{"x":301.85786437626905,"y":98.14213562373095,"z":0.0},{"x":316.0,"y":69.85786437626905,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":301.85786437626905,"maxx":330.14213562373095,"miny":69.85786437626905,"maxy":98.14213562373095},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"yellow","value":-256,"falpha":0.0},"border":{"name":"yellow","value":-256,"falpha":0.0},"depth":0.0,"location":{"x":316.0,"y":84.0,"z":0.0},"type":"POLYGON","empty":false},{"geometry":{"shell":{"points":{"points":[{"x":647.0,"y":59.85786437626905,"z":0.0},{"x":661.142135623731,"y":88.14213562373095,"z":0.0},{"x":632.857864376269,"y":88.14213562373095,"z":0.0},{"x":647.0,"y":59.85786437626905,"z":0.0}]},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"holes":[],"envelope":{"minz":0.0,"maxz":0.0,"minx":632.857864376269,"maxx":661.142135623731,"miny":59.85786437626905,"maxy":88.14213562373095},"factory":{"precisionModel":{"modelType":{"name":"FLOATING"},"scale":0.0},"coordinateSequenceFactory":{},"SRID":0},"SRID":0},"color":{"name":"yellow","value":-256,"falpha":0.0},"border":{"name":"yellow","value":-256,"falpha":0.0},"depth":0.0,"location":{"x":647.0,"y":74.0,"z":0.0},"type":"POLYGON","empty":false}]}]}-->
+				<div id="WebGLCanvas"> 
+				</div> 
+				
+			</div>
+			<!--<canvas id="scene"></canvas>
+			<script src="js/webGL.js"></script>-->
+		</div>
+	</div>
+	<div id="monitors" class="resize-left">
+		<div id="monitors-inside" class="inside">
+			<div id="addMonitor">
+				<div id="addMonitorContainer">
+					<span id="addmoniLeft"><<</span>
+					<span>Monitors</span>
+					<span id="addmoniRight"><<</span>
+				</div>
+				<button id="addMonitorBtn" value=""></button>
+				<button id="sizeMoni" value=""></button>
+			</div>
+			<div id="monitor">
+				<div id="head-monitor">
+					<span class="head">Monitors</span>
+					<input id="close-monitor" type="button" class="close" value=""/>
+					<button id="monitor-reductor" value=""></button>
+					<button id="moniSize" value=""></button>
+				</div>
+				
+			</div>
+			<button id="dispSizeLaunch2" value=""></button>
+			<div id="inspector">
+				<div id="head-inspector">
+					<span class="head">Inspectors</span>
+					<input id="close-inspector" type="button" class="close" value=""/>
+					<button id="inspector-reductor" value=""></button>
+					<button id="inspSize" value=""></button>
+				</div>
+			</div>
+			<div id="addInspector">
+				<div id="addInspectorContainer">
+					<span id="addInspLeft"><<</span>
+					<span>Inspectors</span>
+					<span id="addInspRight"><<</span>
+				</div>
+				<button id="addInspectorBtn" value=""></button>
+				<button id="sizeInsp" value=""></button>
+			</div>
+			
+		</div>
+	</div>
+	<div id="addMonitorsView">
+		<button id="monitorButton" value=""></button>
+		<div id="addMonitorsContainer">
+		<br>
+			<span class="addTop"><<</span>
+			<span class="vertical">M<br>o<br>n<br>i<br>t<br>o<br>r<br>s<br></span>
+			<span class="addBottom"><<</span>
+		<br><br><br>
+		</div>
+	</div>
+</div>
+</body>
+
+
+
+
+
+</html>

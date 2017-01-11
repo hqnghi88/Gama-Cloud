@@ -1,0 +1,357 @@
+* { margin-top: 100; padding: 0; box-sizing: border-box; }
+body { font: 13px Arial; background-color:#eee; }
+#gama-nav {height : 70px; background-color :#e25f2b;}
+/*form {width: 100%; }*/
+h1 {color : white;}
+/* span { position: fixed} */
+
+#containerExp {margin-left: auto; margin-right: auto; width :65%; margin-top : 200px; }
+footer{ bottom:0;width:100%; clear:both;}
+/*#menuParametre {float: left; width : 400px;}
+#simulation{float:right;width:500px; border : 5px; border-color : black;}*/
+
+form {display: inline;}
+
+#play {
+  background: url("/data/img/play4.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  margin : 3px;
+}
+#pause {
+  background: url("/data/img/pause4.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  margin : 3px;
+}
+#step {
+  background: url("/data/img/step4.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  margin : 3px;
+}
+#reload {
+  background: url("/data/img/reload2.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  margin : 3px;
+}
+#stop {
+  background: url("/data/img/stop4.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  margin : 3px;
+}
+
+#play:hover {
+  background: url("/data/img/playOver.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+}
+#pause:hover {
+  background: url("/data/img/pauseOver.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+}
+#step:hover {
+  background: url("/data/img/stepOver.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+}
+#reload:hover {
+  background: url("/data/img/reloadOver.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+}
+#stop:hover {
+  background: url("/data/img/stopOver.png");
+  border: none;
+  width: 35px; /* largeur à spécifier */
+  height: 34px; /* longueur à spécifier */
+  cursor: pointer;
+}
+
+.btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  background: #f58711;
+  padding: 7px 15px 7px 15px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #fa9600;
+  text-decoration: none;
+}
+
+input[type=range] {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+	border-radius: 10px;
+	margin-top : 7px;
+	width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+  
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+	width: 100%;
+	font-size: 13px;
+	color: #333;
+	border-radius: 3px;
+	border: 1px solid #cccccc;
+	padding: 2px 2px;
+	margin-top : 8px;
+}
+
+
+
+span.parameters {
+	font-weight: bold;
+	color: rgb(50,50,60);
+}
+
+.selectdiv {
+  position: relative;
+  /*Don't really need this just for demo styling*/
+  
+  float: left;
+  width : 100%;  
+}
+ 
+.selectdiv:after {
+  content: '<>';
+  font: 13px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 0px;
+  /*Adjust for position however you want*/
+  margin-top : 8px;
+  top: 3.5px;
+  padding: 0 0 0px;
+  border-bottom: 1px solid #999;
+  /*left line */
+  
+  position: absolute;
+  
+  pointer-events: none;
+}
+ 
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  /*height: px;*/
+  float: right;
+  margin: 0px 0px;
+  padding: 2px 2px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+  margin-top : 8px;
+}
+
+output {
+	font: 14px Arial;
+}
+
+.params {
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+#global {
+	width: 90%;
+	min-width: 850px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px
+}
+
+/* En-tête */
+#entete {
+	padding: 20px 0;
+}
+#entete h1 {
+	margin: 0;
+}
+#entete h1 img {
+	float: left;
+	margin: 7px 20px 10px 0;
+}
+#entete .sous-titre {
+	margin: 4px 0 15px 0;
+}
+
+/* Bloc central */
+#centre-bis {
+	width: 100%;
+	overflow: hidden;
+}
+
+/* Menu de navigation */
+#navigation {
+	/*overflow : auto;*/
+}
+#navigation ul {
+	margin: 0;
+	padding: 20px 10px 20px 10px;
+	list-style: none;
+}
+
+
+/* Contenu principal */
+#principal {
+	width:25%;
+	margin-left: 300px;
+	margin-right: 20px;
+	padding: 10px 20px;
+}
+#principal > :first-child {
+	margin-top: 10px;
+}
+#principal p, #principal li {
+	line-height: 1.5;
+}
+
+/* Contenu secondaire */
+#secondaire {
+	float: right;
+	min-width: 500px;
+	width: 40%;
+	padding: 12px 20px;
+}
+
+
+/* CSS Tree menu styles */
+ol.tree
+{
+	margin-top : 17px;
+	font-family: Verdana,Arial;	
+	padding: 0 0 0 30px;
+	margin-left: 30px;
+	/*width: 300px;*/
+}
+	li 
+	{ 
+		position: relative; 
+		margin-left: -30px;
+		list-style: none;
+	}
+	li.file
+	{
+		margin-left: -2px !important;
+	}
+		li.file a
+		{
+			background: url(/data/img/document4.png) -1px 4px no-repeat;
+			color: rgba(20,40,50,0.6);
+			/*margin-left : 15px;*/
+			font-weight : bold;
+			padding-left: 30px;
+			text-decoration: none;
+			display: block;
+			line-height: 2;
+		}
+		li.file a[href *= '.pdf']	{ background: url(/data/img/document.png) 0 0 no-repeat; }
+		li.file a[href *= '.html']	{ background: url(/data/img/document.png) 0 0 no-repeat; }
+		li.file a[href $= '.css']	{ background: url(/data/img/document.png) 0 0 no-repeat; }
+		li.file a[href $= '.js']		{ background: url(/data/img/document.png) 0 0 no-repeat; }
+	li input
+	{
+		position: absolute;
+		left: 0;
+		margin-left: 0;
+		opacity: 0;
+		z-index: 2;
+		cursor: pointer;
+		height: 1em;
+		width: 1em;
+		top: 0;
+	}
+		li input + ol
+		{
+			
+			margin: -0.988em 0 0 -44px; /* 15px */
+			height: 1em;
+		}
+		li input + ol > li { display: none; margin-left: -14px !important; padding-left: 10px; }
+	li label
+	{
+		background: url(/data/img/folder-horizontal15.png) 5px 0px no-repeat;
+		cursor: pointer;
+		/*display: block;*/
+		padding-left: 37px;
+		font-size: 14.2px;
+		font-weight : bold;
+		color: rgba(50,50,60,0.85);
+		line-height: 2;
+		white-space:nowrap;
+		/*#e37a0a;*/
+	}
+
+	li input:checked + ol
+	{
+		background: url(/data/img/expanded.png) 33px 0px no-repeat;
+		margin: -1.25em 0 0 -44px; /* 20px */
+		padding: 1.563em 0 0 80px;
+		height: auto;
+		
+	}
+		li input:checked + ol > li { display: block; margin: 0 0 0.125em;  /* 2px */}
+		li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
