@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.rap.cnf.feature"
+      label="RAP Common Navigator Framework (CNF) (Incubation)"
+      version="0.1.0.20140425-1557"
+      provider-name="Eclipse.org - RAP Incubator">
+
+   <description url="http://eclipse.org/rap/incubator">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.rap.ui.navigator"
+         download-size="390"
+         install-size="825"
+         version="1.4.0.20120709-1436"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.rap.ui.navigator.source"
+         download-size="303"
+         install-size="979"
+         version="1.4.0.20120709-1436"
+         unpack="false"/>
+
+</feature>

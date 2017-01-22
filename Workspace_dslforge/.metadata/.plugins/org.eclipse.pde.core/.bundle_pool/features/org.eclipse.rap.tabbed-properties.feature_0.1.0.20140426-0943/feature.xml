@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.rap.tabbed-properties.feature"
+      label="RAP Tabbed Properties View (Incubation)"
+      version="0.1.0.20140426-0943"
+      provider-name="Eclipse.org - RAP Incubator">
+
+   <description url="http://eclipse.org/rap/incubator">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.rap.ui.views.properties.tabbed"
+         download-size="95"
+         install-size="195"
+         version="1.5.0.20120709-1729"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.rap.ui.views.properties.tabbed.source"
+         download-size="75"
+         install-size="225"
+         version="1.5.0.20120709-1729"
+         unpack="false"/>
+
+</feature>

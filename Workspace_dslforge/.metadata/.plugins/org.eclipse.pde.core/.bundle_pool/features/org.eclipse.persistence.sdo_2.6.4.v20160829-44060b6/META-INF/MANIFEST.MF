@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.4
+Created-By: 1.7.0_80-b15 (Oracle Corporation)
+
+Name: epl-v10.html
+SHA1-Digest: pTOyybcpEe+Y8lkSVUtarMleXqE=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: edl-v10.html
+SHA1-Digest: /Ofgzk+HfH3lV4dQ6x65yE/YtRQ=
+
+Name: license.html
+SHA1-Digest: /vLZjlHkZSXMSfPrWwNqOUDqqbM=
+
+Name: feature.properties
+SHA1-Digest: 3QyOuiL7Qtxb+dD4E6Zw/FT9fxc=
+
+Name: readme.html
+SHA1-Digest: 5s5nYMNUpCj1SWgg+3tBhu1NjdY=
+
+Name: about.html
+SHA1-Digest: 7g8CxO89dwibIGlvH298O8qWvEw=
+
+Name: feature.xml
+SHA1-Digest: FqbEFwc5tuuTOaAFtHkVLhNBIks=
+

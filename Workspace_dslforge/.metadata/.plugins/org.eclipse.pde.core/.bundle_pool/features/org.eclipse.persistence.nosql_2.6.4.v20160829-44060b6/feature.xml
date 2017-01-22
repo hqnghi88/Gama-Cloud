@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.persistence.nosql"
+      label="%featureName"
+      version="2.6.4.v20160829-44060b6"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="%primaryUpdateURL"/>
+      <discovery label="%secondaryUpdateSiteName" url="%secondaryUpdateURL"/>
+   </url>
+
+   <includes
+         id="org.eclipse.persistence.jpa"
+         version="2.6.4.v20160829-44060b6"/>
+
+   <!-- plugin
+         id="javax.resource"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201204270900"
+         unpack="false"/ -->
+
+   <plugin
+         id="org.eclipse.orbit.mongodb"
+         download-size="0"
+         install-size="0"
+         version="2.10.1.v20130422-1135"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.persistence.nosql"
+         download-size="0"
+         install-size="0"
+         version="2.6.4.v20160829-44060b6"
+         unpack="false"/>
+
+
+   <plugin
+         id="org.eclipse.persistence.oracle.nosql"
+         download-size="0"
+         install-size="0"
+         version="2.6.4.v20160601-956e7e7"
+         unpack="false"/>
+
+</feature>

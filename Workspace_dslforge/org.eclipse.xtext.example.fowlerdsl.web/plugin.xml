@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!-- @generated dslforge -->
+<plugin>
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+          class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource">
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.Statemachine"
+            id="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.Statemachine"
+            name="Statemachine">
+      </widget>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.xtext.example.fowlerdsl.web.editor"
+            name="Statemachine Model Editor"
+		            extensions="statemachine"
+           class="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineEditor"
+            contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       factory="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
+        path="/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
+        extension="statemachine">
+  </contribution>
+</extension>
+</plugin>
